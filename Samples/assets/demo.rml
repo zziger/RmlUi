@@ -1,28 +1,70 @@
 <rml>
 	<head>
-		<title>Demo</title>
-		<link type="text/template" href="window.rml" />
+		<title>test</title>
 		<style>
-			body
-			{
-				width: 300dp;
-				height: 225dp;
-				
-				margin: auto;
+			body {
+				width: 800dp;
+				height: 600dp;
+				font-family: rmlui-debugger-font;
 			}
-			
-			div#title_bar div#icon
-			{
-				display: none;
+
+
+			@keyframes indeterminate {
+				from {
+					margin-left: 0;
+					width: 0;
+				}
+
+				33% {
+					margin-left: 0;
+					width: 50%;
+				}
+
+				66% {
+					margin-left: 50%;
+					width: 50%;
+				}
+
+				to {
+					margin-left: 100%;
+					width: 0;
+				}
 			}
-			
-			div#content
-			{
-				text-align: left;
+
+			.bar {
+				position: relative;
+				height: 4px;
+				border-radius: 5px;
+				background: rgba(255, 255, 255, 25);
+				overflow: hidden;
 			}
+
+			.bar .fill {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: block;
+				width: 0;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background: rgba(255, 255, 255, 204);
+				border-radius: 5px;
+			}
+
+			.bar .fill.indeterminate {
+				background: rgba(255, 255, 255, 50);
+				animation: 1.5s linear infinite indeterminate;
+			}
+
 		</style>
 	</head>
-	<body template="window">
-		This is a sample.
+	<body>
+	<div class="test">test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test</div>
+	<div class="barWrapper">
+		<div class="bar">
+			<div class="fill indeterminate"></div>
+		</div>
+	</div>
 	</body>
 </rml>

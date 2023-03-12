@@ -178,6 +178,7 @@ void Backend::RequestExit()
 
 void Backend::BeginFrame()
 {
+    glfwMakeContextCurrent(data->window);
 	RMLUI_ASSERT(data);
 	data->render_interface.BeginFrame();
 	data->render_interface.Clear();
@@ -191,6 +192,7 @@ void Backend::PresentFrame()
 
 	// Optional, used to mark frames during performance profiling.
 	RMLUI_FrameMark;
+    glfwMakeContextCurrent(nullptr);
 }
 
 static void SetupCallbacks(GLFWwindow* window)
